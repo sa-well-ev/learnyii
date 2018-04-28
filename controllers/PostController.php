@@ -7,6 +7,7 @@
  */
 
 namespace app\controllers;
+use app\models\Category;
 use Yii;
 use app\models\TestForm;
 
@@ -42,7 +43,6 @@ class PostController extends AppController
                 Yii::$app->session->setFlash('error', 'Данные не приняты по причине ошибки');
             }
         }
-
         $this->view->title = 'Все статьи';
         return $this->render('test', compact('model'));
     }
@@ -51,6 +51,9 @@ class PostController extends AppController
         $this->view->title = 'Одна статья!';
         $this->view->registerMetaTag(['name' => 'keywords', 'content' => 'ключевики...']);
         $this->view->registerMetaTag(['name' => 'description', 'content' => 'описание страницы...']);
+
+        $cats = Category::find()->all();
+
         return $this->render('show');
     }
 

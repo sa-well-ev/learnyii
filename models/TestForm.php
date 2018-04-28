@@ -33,7 +33,7 @@ class testForm extends Model
             ['email', 'email'],
 //            ['name', 'string', 'min' => 2, 'tooShort' => 'Слишком короткое имя введите больше 2-ух символов'],
 //            ['name', 'string', 'max' => 5, 'tooLong' => 'Слишком короткое имя введите меньше 5-ух символов'],
-            ['name', 'string', 'length' => [2, 5], 'tooLong' => 'Слишком короткое имя введите меньше 5-ух символов'],
+            ['name', 'string', 'length' => [2, 5], 'tooLong' => 'Слишком длинное имя введите меньше 5-ух символов'],
             ['name', 'myRule'],
 //            ['text', 'trim'],
             ['text', 'safe'],
