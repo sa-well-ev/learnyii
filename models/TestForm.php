@@ -35,14 +35,15 @@ class testForm extends Model
 //            ['name', 'string', 'max' => 5, 'tooLong' => 'Слишком короткое имя введите меньше 5-ух символов'],
             ['name', 'string', 'length' => [2, 5], 'tooLong' => 'Слишком короткое имя введите меньше 5-ух символов'],
             ['name', 'myRule'],
-            ['text', 'trim'],
+//            ['text', 'trim'],
+            ['text', 'safe'],
         ];
     }
 
     public function myRule($attr)
     {
-        if (!in_array($this->attrs, ['Дима', 'Dima'])){
-            $this->addError($attrs,'Значение поля не в шаблоне');
+        if (!in_array($this->$attr, ['Дима', 'Dima'])){
+            $this->addError($attr,'Значение поля не в шаблоне');
         }
     }
 }
