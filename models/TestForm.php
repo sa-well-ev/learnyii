@@ -1,21 +1,18 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: didev
- * Date: 26.04.2018
- * Time: 21:43
+
  */
 
 namespace app\models;
 
+use yii\db\ActiveRecord;
 
-use yii\base\Model;
-
-class testForm extends Model
+class testForm extends ActiveRecord
 {
-    public $name;
-    public $email;
-    public $text;
+    public static function tableName()
+    {
+        return 'posts';
+    }
 
     public function attributeLabels()
     {
@@ -29,21 +26,10 @@ class testForm extends Model
     public function rules()
     {
         return [
-            [['name', 'email'], 'required'/*, 'message' => 'Поле обязательно для заполнения'*/],
-            ['email', 'email'],
-//            ['name', 'string', 'min' => 2, 'tooShort' => 'Слишком короткое имя введите больше 2-ух символов'],
-//            ['name', 'string', 'max' => 5, 'tooLong' => 'Слишком короткое имя введите меньше 5-ух символов'],
-            ['name', 'string', 'length' => [2, 5], 'tooLong' => 'Слишком длинное имя введите меньше 5-ух символов'],
-            ['name', 'myRule'],
-//            ['text', 'trim'],
-            ['text', 'safe'],
+            [['name', 'text'], 'required'],
+//            ['email', 'email'],
+//            ['email', 'safe'],
+            ['email', 'trim'],
         ];
-    }
-
-    public function myRule($attr)
-    {
-        if (!in_array($this->$attr, ['Дима', 'Dima'])){
-            $this->addError($attr,'Значение поля не в шаблоне');
-        }
     }
 }

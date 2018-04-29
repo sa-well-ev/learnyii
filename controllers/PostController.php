@@ -1,9 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Andrey
- * Date: 14.03.2016
- * Time: 21:17
+ *
  */
 
 namespace app\controllers;
@@ -30,13 +27,28 @@ class PostController extends AppController
             return 'test';
         }
 
+        /*        $post = TestForm::findOne(3);
+        //        debug($post);
+                $post->email = '22@2.com';
+                $post->save();*/
+
+/*        $post = TestForm::findOne(2);
+        $post->delete();*/
+
+        testForm::deleteAll(['>', 'id', 3]);
+
         $model = new TestForm();
+
+/*        $model->name = 'Автор';
+        $model->email = 'mail@mail.com';
+        $model->text = 'Текст сообщения';
+        $model->save();*/
 
         if  ($model->load(Yii::$app->request->post())){
 /*            debug(Yii::$app->request->post());
             debug($model);
             die;*/
-            if ($model->validate()){
+            if ($model->save()){
                 Yii::$app->session->setFlash('success', 'Данные приняты');
                 return $this->refresh();
             }else{
