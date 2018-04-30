@@ -50,16 +50,16 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'suffix' => '.html', //- не работает на встроенном вебсервере работает на Apache с любой подключённой директории
+//            'suffix' => '.html', //- не работает на встроенном вебсервере работает на Apache с любой подключённой директории
             'rules' => [
-                [
+/*                [
                     'pattern' => '',
                     'route' => 'site/index',
                     'suffix' => ''
                 ],
 //                'about' => 'site/about',
                 '<a:(about|contact|login)>' => 'site/<a>',
-//                '<action:\w+>' => 'site/<action>',
+//                '<action:\w+>' => 'site/<action>',*/
             ],
         ],
 
