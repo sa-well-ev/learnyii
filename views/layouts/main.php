@@ -5,6 +5,7 @@
 
 use app\widgets\Alert;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
@@ -38,10 +39,14 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
+/*            ['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'Статьи', 'url' => ['/post/index']],
             ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+            ['label' => 'Contact', 'url' => ['/site/contact']],*/
+            ['label' => 'Home', 'url' => '/'],
+            ['label' => 'Статьи', 'url' => ['/post/index']],
+            ['label' => 'About', 'url' => ['/about']],
+            ['label' => 'Contact', 'url' => ['/contact']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
@@ -60,6 +65,11 @@ AppAsset::register($this);
     ?>
 
     <div class="container">
+
+        <a href="<?=Url::to('/') ?>">Домой</a>
+        <?= Html::a('О предприятии', Url::to(['/about']))?>
+        <?= Html::a('Контакты', Url::to('/contact'))?> // без передачи ссылки как массива не добавляет suffix
+
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>

@@ -17,6 +17,7 @@ $config = [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'KxVEdYFJitwm8uUrzH9Uy9x1eOtYsPDB',
+            'baseUrl' => '' //очень важно в переадресации - иначе не убирает адрес вложенной папки из пути
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -49,7 +50,16 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'suffix' => '.html', //- не работает на встроенном вебсервере работает на Apache с любой подключённой директории
             'rules' => [
+                [
+                    'pattern' => '',
+                    'route' => 'site/index',
+                    'suffix' => ''
+                ],
+//                'about' => 'site/about',
+                '<a:(about|contact|login)>' => 'site/<a>',
+//                '<action:\w+>' => 'site/<action>',
             ],
         ],
 
