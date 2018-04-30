@@ -68,7 +68,7 @@ AppAsset::register($this);
 
         <a href="<?=Url::to('/') ?>">Домой</a>
         <?= Html::a('О предприятии', Url::to(['/about']))?>
-        <?= Html::a('Контакты', Url::to('/contact'))?> // без передачи ссылки как массива не добавляет suffix
+        <?= Html::a('Контакты', Url::to('/contact')) // без передачи ссылки как массива не добавляет suffix ?>
 
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
